@@ -9,3 +9,13 @@ export function cn(...inputs: ClassValue[]) {
 export const replaceT = (template: string, params: Record<string, string>) => {
   return template.replace(/{{(.*?)}}/g, (_, key) => params[key.trim()] ?? key);
 };
+
+const currencyFormat = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  maximumFractionDigits: 0,
+});
+
+export const toCurrencyFormat = (value: number) => {
+  currencyFormat.format(value);
+};

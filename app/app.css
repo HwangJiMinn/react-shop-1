@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 
 @plugin "tailwindcss-animate";
+@plugin "daisyui";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -136,4 +137,23 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.carousel-container {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-container .carousel-slide {
+  display: flex;
+  justify-content: center;
+  height: 700px;
+}
+
+.carousel-container .carousel-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

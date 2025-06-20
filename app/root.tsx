@@ -14,7 +14,7 @@ import {
 import { getLanguageSession, getThemeSession } from './.server/services/session.service';
 import type { Route } from './+types/root';
 import { LanguageProvider } from './hooks/use-language';
-import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from './hooks/use-theme';
+import { ThemeProvider } from './hooks/use-theme';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const [{ getLanguage }, { getTheme }] = await Promise.all([
@@ -39,16 +39,13 @@ export const links: LinksFunction = () => {
   ];
 };
 
-export const App = ({ lang, ssrTheme }: Route.ComponentProps['loaderData']) => {
-  const [theme] = useTheme();
-
+export const App = ({ lang }: Route.ComponentProps['loaderData']) => {
   return (
-    <html lang={lang} className={theme ?? ''} data-theme={theme ?? ''}>
+    <html lang={lang} className="dark" data-theme="dark">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
-        <PreventFlashOnWrongTheme ssrTheme={Boolean(ssrTheme)} />
         <Links />
       </head>
       <body>
