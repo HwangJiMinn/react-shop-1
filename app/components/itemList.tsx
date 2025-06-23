@@ -1,6 +1,9 @@
+import { Suspense } from 'react';
+
 import type { Product } from '~/common/product';
 
 import ProductList from './productList';
+import ProductLoading from './productLoading';
 
 type Items = {
   title: string;
@@ -20,7 +23,7 @@ const ItemList = ({ title, limit, data, scroll }: Items) => {
       );
       break;
     case '액세서리':
-      product = product.filter((item) => item.category === 'accessory');
+      product = product.filter((item) => item.category === 'jewelery');
       break;
     case '디지털':
       product = product.filter((item) => item.category === 'electronics');
@@ -33,7 +36,9 @@ const ItemList = ({ title, limit, data, scroll }: Items) => {
     <>
       <h2 className="mb-5 text-center text-3xl font-bold">{title}</h2>
       <div className="grid grid-cols-4 gap-6" data-scroll={scroll}>
-        <ProductList products={product} limit={limit} />
+        <Suspense fallback={<ProductLoading limit={limit} />}>
+          <ProductList products={product} limit={limit} />
+        </Suspense>
       </div>
     </>
   );

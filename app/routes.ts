@@ -4,7 +4,12 @@ import { index, prefix, route, type RouteConfig } from '@react-router/dev/routes
 export default [
   // * Pages
 
-  route('/', 'routes/pages/index.tsx', [index('routes/pages/home.tsx')]),
+  route('/', 'routes/pages/index.tsx', [
+    index('routes/pages/home.tsx'),
+    route('fashion', 'routes/pages/Fashion.tsx'),
+    route('accessory', 'routes/pages/accessory.tsx'),
+    route('digital', 'routes/pages/digital.tsx'),
+  ]),
 
   // * APIs
   ...prefix('api', [

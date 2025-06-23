@@ -20,6 +20,12 @@ const Home = () => {
       <section className="mx-auto mt-10 px-4 pb-4">
         <ItemList title="패션" limit={4} data={products} scroll={true} />
       </section>
+      <section className="mx-auto mt-10 px-4 pb-4">
+        <ItemList title="액세서리" limit={4} data={products} scroll={true} />
+      </section>
+      <section className="mx-auto mt-10 px-4 pb-4">
+        <ItemList title="디지털" limit={4} data={products} scroll={true} />
+      </section>
     </>
   );
 };

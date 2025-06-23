@@ -8,7 +8,6 @@ type ProductListType = {
 };
 
 const ProductList = ({ products, limit }: ProductListType) => {
-  console.log(products);
   return products.length > 0 ? (
     products.slice(0, limit).map((item) => {
       return (
@@ -21,7 +20,7 @@ const ProductList = ({ products, limit }: ProductListType) => {
             <img
               src={item.image}
               alt={item.title}
-              className="transition-transform duration-300"
+              className="h-60 transition-transform duration-300"
             />
           </figure>
           <div className="card-body bg-gray-800">
